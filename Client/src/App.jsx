@@ -52,7 +52,7 @@ function App() {
                 style: {
                   background: 'var(--color-red-0)'
                 },
-                duration: 5000,
+                duration: 4000,
               },
               style: {
                 fontSize: "16px",
