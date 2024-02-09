@@ -350,11 +350,13 @@ const getPlaylistTitleThumbnailVideoID= async (playlistURL) => {
         while(1){
             const singlePageData= await getSinglePageResult(url);
             singlePageData.items.forEach((item)=>{
-                videoInfos.push({
-                    title: item.snippet.title, 
-                    videoId: item.snippet.resourceId.videoId, 
-                    videoThumbnailURL: item.snippet.thumbnails.default.url
-                });
+                if(item && item.snippet && item.snippet.title && item.snippet.resourceId && item.snippet.resourceId.videoId && item.snippet.thumbnails && item.snippet.thumbnails.default && item.snippet.thumbnails.default.url){
+                    videoInfos.push({
+                        title: item.snippet.title, 
+                        videoId: item.snippet.resourceId.videoId, 
+                        videoThumbnailURL: item.snippet.thumbnails.default.url
+                    });
+                }
             });
 
             const nextPageToken= singlePageData.nextPageToken;
