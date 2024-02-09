@@ -57,6 +57,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
+        max-width: 100vw;
         font-size: 62.5%;
 
         @media (max-width: 780px) {

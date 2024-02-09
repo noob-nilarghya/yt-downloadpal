@@ -1,0 +1,6 @@
+Instructions: Create a file named 'config.env'
+Example:
+CLIENT_URL=https://blah_blah_blah.com
+PORT=5000
+YOUTUBE_KEY=your-key
+GOOGLE_YT_V3=https://www.googleapis.com/youtube/v3
