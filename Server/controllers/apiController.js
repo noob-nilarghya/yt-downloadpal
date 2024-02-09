@@ -36,6 +36,10 @@ class ConcatStream extends Readable {
     }
 }
 
+exports.testingRoute= async (req, res) => {
+    res.status(200).json({success: true, message: 'Live from server'});
+}
+
 // Regex expression for YT URL
 const rx= /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
 

@@ -5,6 +5,9 @@ const router = express.Router();
 // Global middleware
 // router.use(authController.isLoggedIn);
 
+router.route('/')
+    .get(apiController.testingRoute);
+
 router.route('/getVideoData')
     .post(apiController.getVideoMetaInfo);
 
