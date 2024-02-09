@@ -75,11 +75,13 @@ function PlaylistDwnldBody() {
     const title= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.title : "No Title";
     const channelName= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.channelName : "No Author";
     const actualPlaylistLen= (playlistDownloadData && playlistDownloadData.data) ? Number(playlistDownloadData.data.data.actualPlaylistLen) : 0;
+    const downloadableLen= (playlistDownloadData && playlistDownloadData.data) ? Number(playlistDownloadData.data.data.downloadableLen) : 0;
     const thumbnailURL= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.thumbnailURL : "/default.webp";
 
     const formatTitle=title.split(' ').slice(0,4).join(' ')+"...";
     const extras= {
-        actualPlaylistLen: actualPlaylistLen
+        actualPlaylistLen: actualPlaylistLen,
+        downloadableLen: downloadableLen
     }
 
     const videoInfos= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.videoInfos : [];

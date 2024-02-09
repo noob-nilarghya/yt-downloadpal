@@ -48,9 +48,10 @@ function Preview({title, channelName, extras, type, thumbnailURL}) {
                 {(extras.duration) && <span><b>Duration : </b> {extras.duration}</span>}
                 {(extras.actualPlaylistLen) && <span><b>Number of videos : </b> {extras.actualPlaylistLen}</span>}
                 {(extras.totalNumOfVideoes && extras.totalNumOfVideoes !== extras.actualPlaylistLen) && <span><b>Number of playable videos : </b> {extras.totalNumOfVideoes}</span>}
+                {(extras.downloadableLen && extras.downloadableLen !== extras.actualPlaylistLen) && <span><b>Downloadable : </b> {extras.downloadableLen}</span>}
             </div>
             
-            {(type === "video") && <Form url={videoURL}></Form>}
+            {(type === "video" && extras.duration !== "0 second") && <Form url={videoURL}></Form>}
         </StyledPreview>
     );
 }

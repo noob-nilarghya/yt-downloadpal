@@ -1,5 +1,6 @@
 
-// http://www.youtube.com/watch?v={video_id_here}
+// https://www.youtube.com/watch?v={video_id_here}
+// Unavailable video link for testing: https://www.youtube.com/watch?v=IeLN1s78MHk
 
 const fs= require('fs');
 const ytdl= require('ytdl-core');
@@ -390,6 +391,7 @@ exports.getPlaylistDetails= async (req, res) => {
             channelName: channelName,
             videoInfos: videoInfos,
             actualPlaylistLen: totalNumOfVideoes,
+            downloadableLen: videoInfos.length,
             thumbnailURL: thumbnailURL
         }
         res.status(200).json({success: true, data: finalData});
