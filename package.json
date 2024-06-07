@@ -1,0 +1,25 @@
+{
+  "name": "ytdwnldpal",
+  "version": "1.0.0",
+  "description": "ytdwnldpal",
+  "main": "Sever/server.js",
+  "scripts": {
+    "server": "nodemon Server/server.js",
+    "start": "node Server/server.js",
+    "build": "npm install && npm install --prefix Client && npm run build --prefix Client"
+  },
+  "author": "Nilarghya Roy",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "axios": "^1.6.7",
+    "content-disposition": "^0.5.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.7.0",
+    "stream": "^0.0.2",
+    "ytdl-core": "^4.11.5"
+  }
+}

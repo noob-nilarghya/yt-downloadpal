@@ -1,0 +1,3 @@
+Instructions: Create a file named '.env'
+Example:
+VITE_SERVER_URL=https://blah_blah_blah.com
