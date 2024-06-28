@@ -7,20 +7,21 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getPlaylistDownloadInfo } from "../services/apiYTvideo";
 import Spinner from "./Spinner";
-import PageNotFound from "./PageNotFound";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import Error from "../components/Error";
 
 const Content= styled.div`
     height: max-content;
-    padding: 0rem 2rem 0rem 2rem;
+    margin: 0 auto;
 
-    @media (max-width: 330px){
-        padding: 0rem 0.8rem 0rem 0.8rem;
+
+    @media (max-width: 1024px){
+        padding: 8rem 0;
     }
 
-    @media (max-width: 255px){
-        padding: 0;
+    @media (max-width: 850px) {
+        width: 95%;
     }
 `;
 
@@ -77,11 +78,6 @@ function PlaylistDwnldBody() {
 
     if(isFetching && btnClicked){ return <Spinner></Spinner>; }
 
-    if(playlistDownloadData=== "Can't retrieve playlist information"){
-        toast.error("Can't retrieve playlist information");
-        return (<PageNotFound message= "Can't retrieve playlist information"></PageNotFound>);
-    }
-
     const title= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.title : "No Title";
     const channelName= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.channelName : "No Author";
     const actualPlaylistLen= (playlistDownloadData && playlistDownloadData.data) ? Number(playlistDownloadData.data.data.actualPlaylistLen) : 0;
@@ -100,7 +96,8 @@ function PlaylistDwnldBody() {
         <Content>
             <h1 style={{textAlign: "center"}}>Convert and Download YT Playlist to mp3/mp4 easily</h1>
             <Search type="text" logo="youtube" placeholder="Enter YT playlist link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
-            {playlistDownloadData && <Preview title={formatTitle} channelName={channelName} extras={extras} type="playlistLen" thumbnailURL={thumbnailURL}></Preview>}
+            {error && <Error msg="Error getting playlist video(s)" />}
+            {playlistDownloadData && !error && <Preview title={formatTitle} channelName={channelName} extras={extras} type="playlistLen" thumbnailURL={thumbnailURL}></Preview>}
             {playlistDownloadData && <PlaylistItems videoInfos={videoInfos} title={title}></PlaylistItems>}
             <MoreTools />
         </Content>

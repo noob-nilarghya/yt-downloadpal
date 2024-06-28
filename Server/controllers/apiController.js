@@ -338,6 +338,7 @@ exports.getPlaylistLen= async (req, res) => {
 
         res.status(200).json({success: true, data: finalData});
     } catch (error) {
+        console.log(error.message);
         res.status(400).send({success: false, error:`Error getting playlist info: ${error.message}`});
     }
 }
@@ -415,6 +416,7 @@ exports.getPlaylistDetails= async (req, res) => {
         res.status(200).json({success: true, data: finalData});
 
     } catch (error) {
+        console.log(error.message);
         res.status(400).send({success: false, error:`Error getting playlist info: ${error.message}`});
     }
 }

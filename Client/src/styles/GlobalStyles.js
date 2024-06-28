@@ -31,12 +31,12 @@ const GlobalStyles = createGlobalStyle`
         --color-green-200: rgb(4, 170, 109);
 
 
-
         &.light-mode{ /* Default / Light mode */
 
             /* Background Color Shades */
             --color-bg-1: #2c8bb3;
             --color-bg-2: #2e92bc;
+            --color-text: #000;
         }
 
         &.dark-mode { /* Dark mode */
@@ -44,6 +44,7 @@ const GlobalStyles = createGlobalStyle`
             /* Background Color Shades */
             --color-bg-1: #0a052f;
             --color-bg-2: #07041b;
+            --color-text: #fff;
         }
     }
 
@@ -88,6 +89,7 @@ const GlobalStyles = createGlobalStyle`
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        background: var(--color-bg-1); /* Fallback background color */
         background: linear-gradient(30deg, var(--color-bg-1) 0%, var(--color-bg-1) 60%, var(--color-bg-2) 60%, var(--color-bg-2) 100%) no-repeat center center fixed;
         /* background: linear-gradient(30deg, #0a052f 0%, #0a052f 60%, #07041b 60%, #07041b 100%) no-repeat center center fixed; */
         color: var(--color-white-0);

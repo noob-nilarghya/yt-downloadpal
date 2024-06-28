@@ -5,7 +5,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { downloadPlaylist } from "../services/apiYTvideo";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
-import { useState } from "react";
 
 const StyledPlaylistItems= styled.div`
     margin: 0 auto;

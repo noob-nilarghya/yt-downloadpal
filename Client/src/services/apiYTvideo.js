@@ -3,7 +3,9 @@ import axios from 'axios';
 const BASE_URL= import.meta.env.VITE_SERVER_URL+"/api";
 
 export async function getVideoData(url) {
-    
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minutes
+
     try {
         const response = await fetch(`${BASE_URL}/getVideoData`, {
             method: 'POST',
@@ -13,7 +15,10 @@ export async function getVideoData(url) {
             },
             credentials: 'include', // equivalent to withCredentials: true in Axios
             body: JSON.stringify({ url: url }), // data that should be passed in API as body 
+            signal: controller.signal // Pass the signal to the fetch request
         });
+
+        clearTimeout(timeoutId); // Clear the timeout if the fetch request completes in time
 
         // Check if the request was successful (status code 2xx)
         if (!response.ok) {
@@ -25,12 +30,18 @@ export async function getVideoData(url) {
         return data;
 
     } catch (err) {
-        return err.message;
+        if (err.name === 'AbortError') {
+            throw new Error('Request timed out. Please try again.');
+        }
+        throw new Error(err.message);
     }
 }
 
 
 export async function downloadVideo({ format, url }) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minutes
+
     try {
         const apiUrl = `${BASE_URL}/downloadVideo`;
         const requestBody = {
@@ -45,10 +56,13 @@ export async function downloadVideo({ format, url }) {
             },
             body: JSON.stringify(requestBody),
             credentials: 'include',
+            signal: controller.signal // Pass the signal to the fetch request
         };
 
         // Make the POST request using fetch
         const response = await fetch(apiUrl, requestOptions);
+
+        clearTimeout(timeoutId); // Clear the timeout if the fetch request completes in time
 
         // Check if the request was successful (status code 2xx)
         if (!response.ok) {
@@ -67,7 +81,10 @@ export async function downloadVideo({ format, url }) {
         return {blob: blobData, fileName: fileName};
 
     } catch (err) {
-        return err.message;
+        if (err.name === 'AbortError') {
+            throw new Error('Request timed out. Please try again.');
+        }
+        throw new Error(err.message);
     }
 }
 
@@ -78,11 +95,15 @@ export async function getPlaylistInfo(url) {
             url: '/getPlaylistInfo',
             baseURL: BASE_URL,
             data: { url: url }, // data that should be passed in API as body 
-            withCredentials: true
+            withCredentials: true,
+            timeout: 120000 // 2 minutes timeout
         });
         return res;
     } catch (error) {
-        return "Error in getting playlist information";
+        if (error.code === 'ECONNABORTED') {
+            throw new Error('Request timed out. Please try again.');
+        }
+        throw new Error(error.message);
     }
 }
 
@@ -93,11 +114,15 @@ export async function getPlaylistDownloadInfo(url) {
             url: '/getPlaylistDownloadInfo',
             baseURL: BASE_URL,
             data: { url: url }, // data that should be passed in API as body 
-            withCredentials: true
+            withCredentials: true,
+            timeout: 120000 // 2 minutes timeout
         });
         return res;
     } catch (error) {
-        return "Can't retrieve playlist information";
+        if (error.code === 'ECONNABORTED') {
+            throw new Error('Request timed out. Please try again.');
+        }
+        throw new Error(error.message);
     }
 }
 
@@ -115,6 +140,9 @@ export async function downloadPlaylist({ format, videoIDs, title }) {
     //     return null;
     // }
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minutes
+
     try {
         const apiUrl = `${BASE_URL}/downloadPlaylist`;
         const requestBody = {
@@ -130,10 +158,13 @@ export async function downloadPlaylist({ format, videoIDs, title }) {
             },
             body: JSON.stringify(requestBody),
             credentials: 'include',
+            signal: controller.signal // Pass the signal to the fetch request
         };
 
         // Make the POST request using fetch
         const response = await fetch(apiUrl, requestOptions);
+
+        clearTimeout(timeoutId); // Clear the timeout if the fetch request completes in time
 
         // Check if the request was successful (status code 2xx)
         if (!response.ok) {
@@ -147,6 +178,9 @@ export async function downloadPlaylist({ format, videoIDs, title }) {
         return { blob: blobData, fileName: fileName };
 
     } catch (err) {
-        return err.message;
+        if (err.name === 'AbortError') {
+            throw new Error('Request timed out. Please try again.');
+        }
+        throw new Error(err.message);
     }
 }

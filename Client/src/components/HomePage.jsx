@@ -6,17 +6,18 @@ import MoreTools from "./MoreTools";
 import Preview from "./Preview";
 import Spinner from './Spinner';
 import { useState } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getVideoData } from "../services/apiYTvideo";
 import { secFormatter } from "../utils/utility";
 import toast from "react-hot-toast";
-import PageNotFound from "./PageNotFound";
 import { useEffect } from "react";
 import { useRef } from "react";
+import Error from "../components/Error";
 
 
 const StyledHomePage= styled.div`
-    width: 100dvw;
+    width: 98.5vw;
+    width: 98.5dvw;
     display: grid;
     grid-template-rows: auto 1fr auto;
 `;
@@ -98,11 +99,6 @@ function HomePage() {
         ); 
     }
 
-    if(videoData === "Error fetching data. Check URL or internet connection"){
-        toast.error("Error fetching data. Check URL or internet connection");
-        return (<PageNotFound message="Error fetching data. Check URL or internet connection"></PageNotFound>);
-    }
-
     
     const title= (videoData && videoData.data) ? videoData.data.videoDetails.title : "No Title";
     const channelName= (videoData && videoData.data) ? videoData.data.videoDetails.author.name : "No Author";
@@ -121,7 +117,8 @@ function HomePage() {
             <Content>
                 <h1 style={{textAlign: "center"}}>Convert and Download YT video to mp3/mp4 easily</h1>
                 <Search type="text" logo="youtube" placeholder="Enter YT video link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
-                {videoData && <Preview title={formatTitle} channelName={channelName} extras={extras} type="video" thumbnailURL={thumbnailURL}></Preview>}
+                {error && <Error msg="Error getting video info" />}
+                {videoData && !error && <Preview title={formatTitle} channelName={channelName} extras={extras} type="video" thumbnailURL={thumbnailURL}></Preview>}
                 <MoreTools ref={scrollTo} />
             </Content>
             <Footer />

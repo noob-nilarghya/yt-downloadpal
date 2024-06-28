@@ -30,6 +30,7 @@ const Button= styled.button`
     background-color: transparent;
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
+    cursor: pointer;
     
     &:hover{
         background-color: var(--color-white-0);
