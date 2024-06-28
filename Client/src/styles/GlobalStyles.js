@@ -57,8 +57,9 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
-        max-width: 100vw;
+        max-width: 100dvw;
         font-size: 62.5%;
+        scroll-behavior: smooth;
 
         @media (max-width: 780px) {
             font-size: 60%;
@@ -92,6 +93,7 @@ const GlobalStyles = createGlobalStyle`
         color: var(--color-white-0);
         transition: color 0.3s, background-color 0.3s;
         min-height: 100vh;
+        min-height: 100dvh;
         line-height: 1.5;
         font-size: 1.6rem;
     }

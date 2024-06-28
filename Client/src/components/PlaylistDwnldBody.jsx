@@ -28,6 +28,16 @@ function PlaylistDwnldBody() {
     const [query, setQuery] = useState("");
     const [btnClicked, setBtnClicked] = useState(false);
 
+    useEffect(() => {
+        const timer= setTimeout(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth'});
+        }, 500);
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, []); // Empty dependency array ensures this effect runs only once
+
     const {isFetching, data: playlistDownloadData, error, refetch} = useQuery({
         queryKey: ['ytplaylistDownloadData'],
         queryFn: () => getPlaylistDownloadInfo(query),
@@ -86,16 +96,13 @@ function PlaylistDwnldBody() {
 
     const videoInfos= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.videoInfos : [];
 
-    const tool1= {name1: "YT Video Download", src1: "/youtube.svg", alt1: "youtube", link1: "/"};
-    const tool2= {name2: "YT Playlist Info", src2: "/chart.svg", alt2: "download", link2: "/features/playlist-len"};
-
     return (
         <Content>
             <h1 style={{textAlign: "center"}}>Convert and Download YT Playlist to mp3/mp4 easily</h1>
-            <Search type="text" placeholder="Enter YT playlist link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
+            <Search type="text" logo="youtube" placeholder="Enter YT playlist link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
             {playlistDownloadData && <Preview title={formatTitle} channelName={channelName} extras={extras} type="playlistLen" thumbnailURL={thumbnailURL}></Preview>}
             {playlistDownloadData && <PlaylistItems videoInfos={videoInfos} title={title}></PlaylistItems>}
-            <MoreTools tool1={tool1} tool2={tool2}></MoreTools>
+            <MoreTools />
         </Content>
     );
 }

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const StyledPageNotFound = styled.div`
     height: 100vh;
+    height: 100dvh;
     display: grid;
     grid-template-rows: auto 1fr auto;
 `;

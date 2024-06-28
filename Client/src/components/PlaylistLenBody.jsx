@@ -25,6 +25,16 @@ function PlaylistLenBody() {
     const [query, setQuery] = useState("");
     const [btnClicked, setBtnClicked] = useState(false);
 
+    useEffect(() => {
+        const timer= setTimeout(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth'});
+        }, 500);
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, []); // Empty dependency array ensures this effect runs only once
+
     const {isFetching, data: playlistData, error, refetch} = useQuery({
         queryKey: ['ytplaylistData'],
         queryFn: () => getPlaylistInfo(query),
@@ -97,16 +107,13 @@ function PlaylistLenBody() {
         len_2_00: len_2_00
     }
 
-
-    const tool1= {name1: "YT Video Download", src1: "/youtube.svg", alt1: "youtube", link1: "/"};
-    const tool2= {name2: "YT Playlist Download", src2: "/download.svg", alt2: "download", link2: "/features/playlist-download"};
     return (
         <Content>
             <h1 style={{textAlign: "center"}}>Get YT Playlist info</h1>
-            <Search type="text" placeholder="Enter YT playlist link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
+            <Search type="text" logo="youtube" placeholder="Enter YT playlist link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
             {playlistData && <Preview title={formatTitle} channelName={channelName} extras={extras} type="playlistLen" thumbnailURL={thumbnailURL}></Preview>}
             {playlistData && <PlaylistInfo plInfo={plInfo}></PlaylistInfo>}
-            <MoreTools tool1={tool1} tool2={tool2}></MoreTools>
+            <MoreTools />
         </Content>
     );
 }

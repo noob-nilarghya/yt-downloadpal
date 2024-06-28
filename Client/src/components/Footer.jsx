@@ -5,8 +5,12 @@ const StyledFooter= styled.div`
     justify-content: center;
     align-items: center;
     gap: 1.4rem;
-    padding: 3rem 5rem;
+    padding: 8rem 5rem 3rem 5rem;
     font-size: 1.8rem;
+
+    @media (max-width: 1024px){
+        padding: 3rem 5rem;
+    }
 
     @media (max-width: 300px){
         flex-direction: column;
@@ -31,7 +35,7 @@ const Anchor= styled.a`
 function Footer() {
     return (
         <StyledFooter>
-            <span>Made with 💗 by Nilarghya &nbsp;|| </span>
+            <span>Made with 💗 by Nilarghya</span>
             <ConncetMe>
                 <Anchor href="https://www.linkedin.com/in/nilarghya-roy-6a7637201/" target="_blank"><img src="/linkedin.svg" alt="linkedin" /></Anchor>
                 <Anchor href="https://github.com/noob-nilarghya?tab=repositories" target="_blank"><img src="/github.svg" /></Anchor>

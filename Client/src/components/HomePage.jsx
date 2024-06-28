@@ -12,10 +12,11 @@ import { secFormatter } from "../utils/utility";
 import toast from "react-hot-toast";
 import PageNotFound from "./PageNotFound";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 
 const StyledHomePage= styled.div`
-    height: 100vh;
+    width: 100dvw;
     display: grid;
     grid-template-rows: auto 1fr auto;
 `;
@@ -37,6 +38,17 @@ function HomePage() {
 
     const [query, setQuery] = useState("");
     const [btnClicked, setBtnClicked] = useState(false);
+    const scrollTo = useRef(null);
+
+    useEffect(() => {
+        const timer= setTimeout(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth'});
+        }, 500);
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, []); // Empty dependency array ensures this effect runs only once
 
     const {isFetching, data: videoData, error, refetch} = useQuery({
         queryKey: ['ytVideoData'],
@@ -103,16 +115,14 @@ function HomePage() {
         duration: duration,
         videoURL: videoURL
     }
-    const tool1= {name1: "YT Playlist Info", src1: "/chart.svg", alt1: "chart", link1: "/features/playlist-len"};
-    const tool2= {name2: "YT Playlist Download", src2: "/download.svg", alt2: "download", link2: "/features/playlist-download"};
     return (
         <StyledHomePage>
-            <Header />
+            <Header scrollTo={scrollTo}/>
             <Content>
                 <h1 style={{textAlign: "center"}}>Convert and Download YT video to mp3/mp4 easily</h1>
-                <Search type="text" placeholder="Enter YT video link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
+                <Search type="text" logo="youtube" placeholder="Enter YT video link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
                 {videoData && <Preview title={formatTitle} channelName={channelName} extras={extras} type="video" thumbnailURL={thumbnailURL}></Preview>}
-                <MoreTools tool1={tool1} tool2={tool2}></MoreTools>
+                <MoreTools ref={scrollTo} />
             </Content>
             <Footer />
         </StyledHomePage>

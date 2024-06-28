@@ -15,18 +15,12 @@ const Img= styled.img`
         transform: scale(1.2);
     }
 `;
-const ImgDiv= styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-`;
 
 const Container= styled.div`
-    display: grid;
-    grid-template-columns: 10rem 1fr;
-
+    display: flex;
+    justify-content:center;
     align-items: center;
+    gap: 1rem;
 `;
 
 
@@ -34,17 +28,17 @@ function FeaturesList() {
     return (
         <div style={{display: "flex", flexDirection: "column", gap: "0.5rem", alignItems: "center", padding: "3rem 0 1.5rem 0"}}>
             <H2>Features list:</H2>
-            <div style={{display: "flex", flexDirection: "column", gap: "2rem"}}>
+            <div style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
                 <Container>
-                    <ImgDiv><Img src="/videoDownload.svg" alt="Download Video"></Img></ImgDiv>
+                    <Img src="/videoDownload.svg" alt="Download Video"></Img>
                     <p>Paste the video link, choose a format (mp3/mp4), download in just a click</p>
                 </Container>
                 <Container>
-                    <ImgDiv><Img src="/playlistDetails.svg" alt="Playlist Info"></Img></ImgDiv>
+                    <Img src="/playlistDetails.svg" alt="Playlist Info"></Img>
                     <p>Get playlist info like total / avg length, duration @1.25,1.5,1.75,2x speed</p>
                 </Container>
                 <Container>
-                    <ImgDiv><Img src="/playlistDownload.svg" alt="Download Playlist"></Img></ImgDiv>
+                    <Img src="/playlistDownload.svg" alt="Download Playlist"></Img>
                     <p>Pick all / selected videoes and format (mp3/mp4), download in just a click</p>
                 </Container>
             </div>
