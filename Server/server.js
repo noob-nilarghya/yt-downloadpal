@@ -41,7 +41,7 @@ app.use(express.json()); // required (called middleware). // response data more 
 app.use(express.urlencoded( { extended: true} ));
 app.use(bodyParser.json());
 
-// app.use(express.static(path.join(process.cwd(), "Client", "dist")));
+app.use(express.static(path.join(process.cwd(), "Client", "dist")));
 app.use(express.static(path.join(process.cwd())));
 
 // ROUTES HANDLING
@@ -52,9 +52,9 @@ app.get('/sitemap.xml', (req, res) => {
     res.sendFile(path.join(process.cwd(), "sitemap.xml"));
 })
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(process.cwd(), "Client", "dist", "index.html"));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(process.cwd(), "Client", "dist", "index.html"));
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
