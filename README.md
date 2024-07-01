@@ -8,27 +8,27 @@ It is equipped with various features like:
 
 ## Features
 
-- Download **YouTube Vedio** in mp3 and mp4 formats
+- ![youtube](Client/public/youtube.svg) Download **YouTube Vedio** in mp3 and mp4 formats 
     - Paste the video link in the search box
     - Get the video info, choose the desired format
     - Download seamlessly with ease
-- Download **YouTube Playlist** in mp3 and mp4 format
+- ![youtube](Client/public/youtube.svg) Download **YouTube Playlist** in mp3 and mp4 format 
     - Paste the playlist link in the search box
     - Get individual video info of that playlist
     - Pick selected or all video, choose the desired format
     - Conveniently download whole playlist with just a click
-- Get **Youtube playlist information**
+- ![youtube](Client/public/youtube.svg) Get **Youtube playlist information** 
     - Paste the playlist link in the search box
     - Get information of the playlist like:
         - Total duration
         - Average duration
         - Get duration of the playlist at ```1.25x, 1.5x, 1.75x, 2x```
     - No limit on playlist size (works with playlist of any length)
-- Download **Facebook Live/TV/Reels/Video/Public stories** in different mp4 format
-- Download **Instagram Live/Reels/Video/Public stories** in different mp4 format
-- Download **Thread media content (any)** in different media format (like mp4, mp3, jpg)
-- Download **Spotify music content** in mp3 format
-- Download **Twitter/X media content (any)** in different media format (like mp4, mp3, jpg)
+- ![facebook](Client/public/facebook.svg) Download **Facebook Live/TV/Reels/Video/Public stories** in different mp4 format 
+- ![instagram](Client/public/instagram.svg) Download **Instagram Live/Reels/Video/Public stories** in different mp4 format 
+- ![thread](Client/public/thread.svg) Download **Thread media content (any)** in different media format (like mp4, mp3, jpg) 
+- ![spotify](Client/public/spotify.svg) Download **Spotify music content** in mp3 format 
+- ![twitter](Client/public/twitter.svg) Download **Twitter/X media content (any)** in different media format (like mp4, mp3, jpg) 
 - Other features
     - Elegant Dark Mode
     - Fast downloads

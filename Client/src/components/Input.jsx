@@ -26,11 +26,7 @@ const StyledInput= styled.input`
     }
     
     @media (max-width: 450px) {
-        width: 90vw;
-    }
-
-    @media (max-width: 400px) {
-        width: 95vw;
+        width: 85vw;
     }
 
 `;
