@@ -42,12 +42,13 @@ const Anchor= styled.a`
 
 const Div= styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     margin-top: 2rem;
     color: #fff;
-    padding: 0.2rem 1.8rem;
+    padding: 0.6rem 5rem;
     background: rgba(255, 255, 255, 0.2);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     backdrop-filter: blur(5px);

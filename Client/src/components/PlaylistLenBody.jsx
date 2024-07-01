@@ -109,9 +109,9 @@ function PlaylistLenBody() {
     return (
         <Content>
             <h1 style={{textAlign: "center"}}>Get YT Playlist info</h1>
-            <Search type="text" logo="youtube" placeholder="Enter YT playlist link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
+            <Search type="text" logo="youtube" plInfo={1000} placeholder="Enter YT playlist link here..." onClick={onClick} query={query} setQuery={setQuery}></Search>
             {error && <Error msg="Error getting playlist info" />}
-            {playlistData && !error && <Preview title={formatTitle} channelName={channelName} extras={extras} type="playlistLen" thumbnailURL={thumbnailURL}></Preview>}
+            {playlistData && !error && <Preview isYT={true} title={formatTitle} channelName={channelName} extras={extras} type="playlistLen" thumbnailURL={thumbnailURL}></Preview>}
             {playlistData && <PlaylistInfo plInfo={plInfo}></PlaylistInfo>}
             <MoreTools />
         </Content>

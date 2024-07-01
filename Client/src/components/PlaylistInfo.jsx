@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledPlaylistInfo= styled.div`
     width: fit-content;
+    max-width: 80rem;
     margin: 2rem auto;
     display: flex;
     flex-direction: column;

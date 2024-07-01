@@ -8,22 +8,27 @@ It is equipped with various features like:
 
 ## Features
 
-- Download YouTube Vedio in mp3 and mp4 formats
+- Download **YouTube Vedio** in mp3 and mp4 formats
     - Paste the video link in the search box
     - Get the video info, choose the desired format
     - Download seamlessly with ease
-- Download TouTube Playlist in mp3 and mp4 format
+- Download **YouTube Playlist** in mp3 and mp4 format
     - Paste the playlist link in the search box
     - Get individual video info of that playlist
     - Pick selected or all video, choose the desired format
     - Conveniently download whole playlist with just a click
-- Get playlist information
+- Get **Youtube playlist information**
     - Paste the playlist link in the search box
     - Get information of the playlist like:
         - Total duration
         - Average duration
         - Get duration of the playlist at ```1.25x, 1.5x, 1.75x, 2x```
     - No limit on playlist size (works with playlist of any length)
+- Download **Facebook Live/TV/Reels/Video/Public stories** in different mp4 format
+- Download **Instagram Live/Reels/Video/Public stories** in different mp4 format
+- Download **Thread media content (any)** in different media format (like mp4, mp3, jpg)
+- Download **Spotify music content** in mp3 format
+- Download **Twitter/X media content (any)** in different media format (like mp4, mp3, jpg)
 - Other features
     - Elegant Dark Mode
     - Fast downloads
@@ -31,7 +36,7 @@ It is equipped with various features like:
 
 ## Installation
 Clone and download this repository
-Install my-project with npm Create a .env file, copy the content of env.txt and fill your envoironment variable Do the exact same thing with Client/.env as well
+Install my-project with npm Create a .env file, copy the content of exampleENV.txt and fill your envoironment variable Do the exact same thing with Client/.env as well
 
 **NOTE: CLIENT_URL and VITE_SERVER_URL should be on the same PORT**
 
@@ -48,7 +53,7 @@ Open the URL to access the website 🎉
 
 **Server:** ```Node.js, Express.js, cors, Axios, Archiver, Stream, ytdl-core```
 
-**API used:** ```ytdl-core API, GoogleAPI YouTube v3```
+**API used:** ```ytdl-core API, GoogleAPI YouTube v3, Rapid API```
 
 
 ## Screenshots

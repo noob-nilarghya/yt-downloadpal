@@ -93,7 +93,7 @@ function HomePage() {
         return (
             <StyledHomePage>
                 <Header />
-                <Spinner></Spinner>
+                <Spinner />
                 <Footer />
             </StyledHomePage>
         ); 
@@ -116,9 +116,9 @@ function HomePage() {
             <Header scrollTo={scrollTo}/>
             <Content>
                 <h1 style={{textAlign: "center"}}>Convert and Download YT video to mp3/mp4 easily</h1>
-                <Search type="text" logo="youtube" placeholder="Enter YT video link here ..." onClick={onClick} query={query} setQuery={setQuery}></Search>
+                <Search type="text" logo="youtube" placeholder="Enter YT video link here..." onClick={onClick} query={query} setQuery={setQuery}></Search>
                 {error && <Error msg="Error getting video info" />}
-                {videoData && !error && <Preview title={formatTitle} channelName={channelName} extras={extras} type="video" thumbnailURL={thumbnailURL}></Preview>}
+                {videoData && !error && <Preview isYT={true} title={formatTitle} channelName={channelName} extras={extras} type="video" thumbnailURL={thumbnailURL}></Preview>}
                 <MoreTools ref={scrollTo} />
             </Content>
             <Footer />

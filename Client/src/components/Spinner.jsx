@@ -25,6 +25,7 @@ const Loader1 = styled.div`
 
   &:before {
     content: "Loading ⏳ This might take a while 🕓";
+    font-size: 2rem;
   }
 
   @media (max-width:300px){

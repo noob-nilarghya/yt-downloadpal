@@ -13,8 +13,8 @@ const StyledHeader= styled.div`
         padding: 5rem 8rem;
     }
 
-    @media (max-width: 300px) {
-        padding: 5rem 0rem;
+    @media (max-width: 500px) {
+        padding: 3rem 5rem;
     }
 `;
 

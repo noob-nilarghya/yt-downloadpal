@@ -78,13 +78,11 @@ const SupportedPF= styled.div`
     background: linear-gradient(to right, transparent, #88cc88, transparent);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 1px var(--color-text-reverse);
 
     &>img{
         width: 2rem;
-    }
-
-    @media (max-width: 550px) {
-        margin-bottom: 1rem;
     }
 `;
 
@@ -95,6 +93,7 @@ function FeaturesList() {
             <H2>Features list:</H2>
             <SupportedPF>
                 <span>Supported platforms: </span>
+                <img src='/youtube.svg' alt="youtube"></img>
                 <img src='/facebook.svg' alt="facebook"></img>
                 <img src='/twitter.svg' alt="twitter"></img>
                 <img src='/thread.svg' alt="thread"></img>
@@ -104,7 +103,7 @@ function FeaturesList() {
             <DivContainer>
                 <Container>
                     <Img src="/videoDownload.svg" alt="Download Video"></Img>
-                    <p>Multi-Platform Video Downloads</p>
+                    <p>Multi-Platform Downloads support</p>
                 </Container>
                 <Container>
                     <Img src="/playlistDetails.svg" alt="Playlist Info"></Img>

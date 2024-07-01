@@ -1,20 +1,18 @@
+
 import styled from "styled-components";
 import Search from "./Search";
 import Preview from "./Preview";
-import PlaylistItems from "./PlaylistItems";
 import MoreTools from "./MoreTools";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getPlaylistDownloadInfo } from "../services/apiYTvideo";
+import { FBvideoDownloadAPI } from "../services/apiOtherVideo";
 import Spinner from "./Spinner";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
-import Error from "../components/Error";
+import Error from '../components/Error';
 
 const Content= styled.div`
     height: max-content;
     margin: 0 auto;
-
 
     @media (max-width: 1024px){
         padding: 8rem 0;
@@ -25,7 +23,7 @@ const Content= styled.div`
     }
 `;
 
-function PlaylistDwnldBody() {
+function FBvideoDownload() {
     const [query, setQuery] = useState("");
     const [btnClicked, setBtnClicked] = useState(false);
 
@@ -39,17 +37,18 @@ function PlaylistDwnldBody() {
         }
     }, []); // Empty dependency array ensures this effect runs only once
 
-    const {isFetching, data: playlistDownloadData, error, refetch} = useQuery({
-        queryKey: ['ytplaylistDownloadData'],
-        queryFn: () => getPlaylistDownloadInfo(query),
+    const {isFetching, data: facebookData, error, refetch} = useQuery({
+        queryKey: ['facebook'],
+        queryFn: () => FBvideoDownloadAPI(query),
         enabled: false, // Initialize useQuery with enabled set to false
         refetchOnWindowFocus: false, // Disable automatic refetch on window focus
     });
 
+
     // On clicking enter button, useQuery should be refetched
     function onClickEnter(evt){
         if(evt.key === 'Enter'){
-            if(!query) {
+            if(!query || !facebookTrackReg.test(query)) {
                 toast.error("Please provide a valid URL first");
                 return;
             }
@@ -78,30 +77,21 @@ function PlaylistDwnldBody() {
 
     if(isFetching && btnClicked){ return <Spinner></Spinner>; }
 
-    const title= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.title : "No Title";
-    const channelName= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.channelName : "No Author";
-    const actualPlaylistLen= (playlistDownloadData && playlistDownloadData.data) ? Number(playlistDownloadData.data.data.actualPlaylistLen) : 0;
-    const downloadableLen= (playlistDownloadData && playlistDownloadData.data) ? Number(playlistDownloadData.data.data.downloadableLen) : 0;
-    const thumbnailURL= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.thumbnailURL : "/default.webp";
-
-    const formatTitle=title.split(' ').slice(0,4).join(' ')+"...";
+    const formatTitle= facebookData?.title.split(' ').slice(0,6).join(' ')+"...";
+    const thumbnailURL= facebookData?.thumbnail;
     const extras= {
-        actualPlaylistLen: actualPlaylistLen,
-        downloadableLen: downloadableLen
+        medias: facebookData?.media
     }
-
-    const videoInfos= (playlistDownloadData && playlistDownloadData.data) ? playlistDownloadData.data.data.videoInfos : [];
 
     return (
         <Content>
-            <h1 style={{textAlign: "center"}}>Convert and Download YT Playlist to mp3/mp4 easily</h1>
-            <Search type="text" logo="youtube" plInfo={500} placeholder="Enter YT playlist link here..." onClick={onClick} query={query} setQuery={setQuery}></Search>
-            {error && <Error msg="Error getting playlist video(s)" />}
-            {playlistDownloadData && !error && <Preview isYT={true} title={formatTitle} channelName={channelName} extras={extras} type="playlistLen" thumbnailURL={thumbnailURL}></Preview>}
-            {playlistDownloadData && <PlaylistItems videoInfos={videoInfos} title={title}></PlaylistItems>}
+            <h1 style={{textAlign: "center"}}>Download Facebook Video/Reel</h1>
+            <Search type="text" logo="facebook" placeholder="Enter facebook video/reel link here..." onClick={onClick} query={query} setQuery={setQuery}></Search>
+            {error && <Error msg="Error getting playlist info" />}
+            {facebookData && !error && <Preview title={formatTitle} extras={extras} type="fb-insta" social="fb" thumbnailURL={thumbnailURL}></Preview>}
             <MoreTools />
         </Content>
     );
 }
 
-export default PlaylistDwnldBody;
+export default FBvideoDownload;

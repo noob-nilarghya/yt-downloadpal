@@ -42,15 +42,14 @@ const MoreTools = forwardRef((props, ref) => {
                 <ButtonTools onClick={() => navigate('/') }><img src='/youtube.svg' alt='youtube' />&nbsp; YT Video Download</ButtonTools>
                 <ButtonTools onClick={() => navigate('/features/playlist-len') }><img src='/chart.svg' alt='chart' />&nbsp; YT Playlist Info</ButtonTools>
                 <ButtonTools onClick={() => navigate('/features/playlist-download') }><img src='/download.svg' alt='download' />&nbsp; YT Playlist Download</ButtonTools>
-                <ButtonTools onClick={() => navigate('/') }><img style={{width: "16px"}} src='/facebook.svg' alt='facebook' />&nbsp; FB Video Download</ButtonTools>
-                <ButtonTools onClick={() => navigate('/features/playlist-download') }><img style={{width: "16px"}} src='/thread.svg' alt='thread' />&nbsp; Thread Downloader</ButtonTools>
-                <ButtonTools onClick={() => navigate('/features/playlist-len') }><img style={{width: "16px"}} src='/instagram.svg' alt='instagram' />&nbsp; IG Video Download</ButtonTools>
-                <div style={{gridColumn: "1/-1", display: "flex", gap: "0.8rem", justifyContent: "center", alignItems: "center"}}>
-                    <ButtonTools onClick={() => navigate('/') }><img style={{width: "16px"}} src='/twitter.svg' alt='x' />&nbsp; Twitter Downloader</ButtonTools>
-                    <ButtonTools onClick={() => navigate('/features/playlist-download') }><img style={{width: "16px"}} src='/spotify.svg' alt='spotify' />&nbsp; Spotify Downloader</ButtonTools>
+                <ButtonTools onClick={() => navigate('/features/fb-video-download') }><img style={{width: "16px"}} src='/facebook.svg' alt='facebook' />&nbsp; FB Video Download</ButtonTools>
+                <ButtonTools onClick={() => navigate('/features/thread-download') }><img style={{width: "16px"}} src='/thread.svg' alt='thread' />&nbsp; Thread Downloader</ButtonTools>
+                <ButtonTools onClick={() => navigate('/features/insta-video-download') }><img style={{width: "16px"}} src='/instagram.svg' alt='instagram' />&nbsp; IG Video Download</ButtonTools>
+                <div style={{gridColumn: "1/-1", display: "flex", gap: "2rem", justifyContent: "center", alignItems: "center"}}>
+                    <ButtonTools onClick={() => navigate('/features/x-download') }><img style={{width: "16px"}} src='/twitter.svg' alt='x' />&nbsp; Twitter Downloader</ButtonTools>
+                    <ButtonTools onClick={() => navigate('/features/spotify-download') }><img style={{width: "16px"}} src='/spotify.svg' alt='spotify' />&nbsp; Spotify Downloader</ButtonTools>
                 </div>
             </Container>
-            
         </StyledMoreTools>
     );
 })
