@@ -21,7 +21,7 @@ const StyledHeader= styled.div`
 const Container= styled.div`
     display: flex;
     justify-content: flex-end;
-    gap: 2vw;
+    gap: 2rem;
     align-items: center;
 `;
 

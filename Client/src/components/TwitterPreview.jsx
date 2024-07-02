@@ -65,7 +65,7 @@ const MediaContainer= styled.div`
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 `;
 
 const Container= styled.div`
@@ -82,6 +82,9 @@ const DivImg= styled.div`
     overflow: hidden;
     position: relative;
     border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
 
     &::before{
         position: absolute;
@@ -115,7 +118,7 @@ const DivImg= styled.div`
 function TwitterPreview({data}) {
     return (
         <StyledPreview>
-            <span> <b>Title : </b> {data.tweetText} </span>
+            <span> <b>Title : </b> {data.tweetText.split(' ').slice(0,10).join(' ')+"..."} </span>
             <div style={{display: "flex", gap: "5rem"}}>
                 <span>Creator: {data.username}</span>
                 <span>Followers: {data.followers}</span>

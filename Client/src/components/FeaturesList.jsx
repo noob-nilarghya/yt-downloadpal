@@ -28,7 +28,7 @@ const DivContainer= styled.div`
     display: flex;
     gap: 2rem;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 
 `;
 
