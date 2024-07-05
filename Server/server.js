@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const http= require('http');
+const https= require('https');
 const cookieParser= require('cookie-parser'); // to parse cookie
 const bodyParser= require('body-parser');
 
@@ -59,7 +59,7 @@ app.use('/api', webRouter); // route mounting
 
 function keepAlive(){
     setInterval(() => {
-        http.get(`${process.env.SERVER_URL}/api/keep-alive`, (res) => {
+        https.get(`${process.env.SERVER_URL}/api/keep-alive`, (res) => {
             console.log(`Server is alive: ${res.statusCode}`)
         }).on('error', (e) => {
             console.log(`Error pinging server: ${e.message}`);
