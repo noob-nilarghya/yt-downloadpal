@@ -1,7 +1,7 @@
 
-# YT-DownloadPal
+# ClipDroid
 
-Experience the convenience and versatility with our robust and responsive full-stack web application YT-DownloadPal. This a is your ultimate companion for effortlessly downloading content from YouTube, the premier video streaming platform, directly to your local device. With comprehensive support for both MP3 and MP4 formats, to ensures that you can enjoy your favorite media in the format of your choice.
+Experience the convenience and versatility with our robust and responsive full-stack web application ClipDroid. This a is your ultimate companion for effortlessly downloading content from YouTube, Facebook, Instagram, Twitter/X, Thread, and even from Spotify directly to your local device. With comprehensive support for both MP3 and MP4 formats, to ensures that you can enjoy your favorite media in the format of your choice.
 
 It is equipped with various features like:
 

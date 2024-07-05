@@ -1,7 +1,7 @@
 {
-  "name": "ytdwnldpal",
+  "name": "clipdroid",
   "version": "1.0.0",
-  "description": "ytdwnldpal",
+  "description": "clipdroid",
   "main": "Sever/server.js",
   "scripts": {
     "server": "nodemon Server/server.js",
