@@ -5,7 +5,7 @@ const router = express.Router();
 // Global middleware
 // router.use(authController.isLoggedIn);
 
-router.route('/')
+router.route('/keep-alive')
     .get(apiController.testingRoute);
 
 router.route('/getVideoData')

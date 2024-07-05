@@ -56,6 +56,17 @@ app.use(express.static(path.join(process.cwd())));
 const webRouter= require('./routes/webRouter');
 
 app.use('/api', webRouter); // route mounting
+
+function keepAlive(){
+    setInterval(() => {
+        http.get(`${process.env.SERVER_URL}/api/keep-alive`, (res) => {
+            console.log(`Server is alive: ${res.statusCode}`)
+        }).on('error', (e) => {
+            console.log(`Error pinging server: ${e.message}`);
+        });
+    }, 14*60*1000);
+}
+
 app.get('/sitemap.xml', (req, res) => {
     res.sendFile(path.join(process.cwd(), "sitemap.xml"));
 })
@@ -66,4 +77,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
+    keepAlive();
 });
